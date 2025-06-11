@@ -1,0 +1,64 @@
+/* Mengatur dasar-dasar halaman */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #333; /* Latar belakang abu-abu gelap */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Kontainer utama untuk mengatur posisi */
+.quote-container {
+    text-align: center;
+    width: 100%;
+    max-width: 700px; /* Lebar maksimal kotak kutipan */
+}
+
+/* Kotak utama yang berisi kutipan */
+.quote-box {
+    background-color: #f4f4f4; /* Warna abu-abu terang untuk kotak */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); /* Efek bayangan biar terangkat */
+    margin-bottom: 25px; /* Jarak antara kotak dan tombol */
+}
+
+/* Styling untuk teks kutipan */
+#quote-text {
+    font-size: 1.75em; /* Ukuran font lebih besar untuk kutipan */
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Styling untuk nama penulis */
+#quote-author {
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: right;
+    color: #555;
+    min-height: 1.2em; /* Menjaga tinggi elemen tetap sama untuk mencegah layout 'lompat' */
+}
+
+/* Styling untuk tombol */
+#new-quote-btn {
+    background-color: #007BFF; /* Warna biru yang menarik */
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transisi halus saat hover */
+}
+
+/* Efek saat kursor mouse berada di atas tombol */
+#new-quote-btn:hover {
+    background-color: #0056b3; /* Warna biru menjadi sedikit lebih gelap */
+}
