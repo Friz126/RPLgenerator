@@ -3,17 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generator Kutipan Acak</title>
+    <title>Generator Kutipan Personal</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="quote-container">
+    <!-- Layar 1: Tampilan Awal -->
+    <div id="start-screen" class="screen active">
+        <h1>Generator Kutipan</h1>
+        <p>Temukan inspirasi atau tuliskan motivasimu sendiri.</p>
+        <div class="start-buttons">
+            <button id="public-quotes-btn" class="main-button">Baca Kutipan Publik</button>
+            <button id="personal-quotes-btn" class="main-button secondary">Kutipan Pribadi Saya</button>
+        </div>
+    </div>
+
+    <!-- Layar 2: Pilihan Kategori -->
+    <div id="category-screen" class="screen hidden">
+        <h2>Pilih Kategori Kutipan</h2>
+        <div class="category-buttons">
+            <button class="category-btn" data-category="Inspiratif">Inspiratif</button>
+            <button class="category-btn" data-category="Motivasi">Motivasi</button>
+            <button class="category-btn" data-category="Romantis">Romantis</button>
+            <button class="category-btn" data-category="Pendidikan">Pendidikan</button>
+            <button class="category-btn" data-category="Spiritual">Spiritual</button>
+            <button class="category-btn" data-category="Lain-lain">Refleksi Hidup</button>
+        </div>
+        <button id="back-to-start-from-category" class="back-button">Kembali ke Awal</button>
+    </div>
+
+    <!-- Layar 3: Generator Kutipan -->
+    <div id="generator-screen" class="screen hidden">
         <div class="quote-box">
-            <p id="quote-text">Klik tombol di bawah untuk mendapatkan kutipan inspiratif!</p>
+            <button id="copy-btn" title="Salin kutipan">📋</button>
+            <p id="quote-text">...</p>
             <p id="quote-author"></p>
         </div>
-        <button id="new-quote-btn">Kutipan Baru</button>
+        <div class="generator-buttons">
+            <button id="new-quote-btn" class="main-button">Kutipan Baru</button>
+            <button id="back-to-category-btn" class="back-button">Pilih Kategori Lain</button>
+        </div>
+    </div>
+
+    <!-- Layar 4: Pengelola Kutipan Pribadi -->
+    <div id="personal-quotes-screen" class="screen hidden">
+        <h2>Kutipan Pribadi Saya</h2>
+        <form id="personal-quote-form">
+            <textarea id="personal-quote-input" placeholder="Tulis kutipan pribadimu di sini..." required></textarea>
+            <input type="text" id="personal-author-input" placeholder="Penulis (opsional)">
+            <button type="submit" class="main-button">Simpan Kutipan</button>
+        </form>
+        <div id="personal-quote-list-container">
+            <h3>Daftar Kutipan Tersimpan:</h3>
+            <div id="empty-state-message" class="hidden">
+                <p>Anda belum punya kutipan pribadi.</p>
+                <p>Yuk, tulis motivasi pertamamu di atas!</p>
+            </div>
+            <ul id="personal-quote-list"></ul>
+        </div>
+        <button id="use-personal-quotes-btn" class="main-button">Gunakan Kutipan Ini</button>
+        <button id="back-to-start-from-personal" class="back-button">Kembali ke Awal</button>
     </div>
 
     <script src="script.js"></script>

@@ -1,64 +1,200 @@
-/* Mengatur dasar-dasar halaman */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #333; /* Latar belakang abu-abu gelap */
-    color: #333;
+    background-color: #333;
+    color: #f4f4f4;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-/* Kontainer utama untuk mengatur posisi */
-.quote-container {
     text-align: center;
+}
+
+.screen {
     width: 100%;
-    max-width: 700px; /* Lebar maksimal kotak kutipan */
+    max-width: 700px;
+    padding: 20px;
+    /* Perubahan untuk Transisi */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    position: absolute; /* Menumpuk layar di posisi yang sama */
 }
 
-/* Kotak utama yang berisi kutipan */
-.quote-box {
-    background-color: #f4f4f4; /* Warna abu-abu terang untuk kotak */
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); /* Efek bayangan biar terangkat */
-    margin-bottom: 25px; /* Jarak antara kotak dan tombol */
+/* Class baru untuk menampilkan layar */
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+    position: relative; /* Mengembalikan posisi normal saat aktif */
 }
 
-/* Styling untuk teks kutipan */
-#quote-text {
-    font-size: 1.75em; /* Ukuran font lebih besar untuk kutipan */
-    font-style: italic;
-    line-height: 1.5;
-    margin-bottom: 20px;
+h1 { font-size: 3em; }
+h2 { font-size: 2em; margin-bottom: 30px; }
+
+.start-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
 }
 
-/* Styling untuk nama penulis */
-#quote-author {
-    font-size: 1.1em;
-    font-weight: bold;
-    text-align: right;
-    color: #555;
-    min-height: 1.2em; /* Menjaga tinggi elemen tetap sama untuk mencegah layout 'lompat' */
-}
-
-/* Styling untuk tombol */
-#new-quote-btn {
-    background-color: #007BFF; /* Warna biru yang menarik */
+.main-button {
+    background-color: #007BFF;
     color: #ffffff;
     border: none;
     padding: 15px 30px;
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Transisi halus saat hover */
+    transition: background-color 0.3s ease;
 }
 
-/* Efek saat kursor mouse berada di atas tombol */
-#new-quote-btn:hover {
-    background-color: #0056b3; /* Warna biru menjadi sedikit lebih gelap */
+.main-button.secondary {
+    background-color: #6c757d;
+}
+
+.main-button:hover {
+    filter: brightness(110%);
+}
+
+.category-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.category-btn {
+    background-color: #555;
+    color: #fff;
+    border: 2px solid #777;
+    padding: 20px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-btn:hover {
+    background-color: #777;
+    border-color: #999;
+}
+
+/* Style untuk Generator Screen */
+.quote-box {
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 25px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+/* Style untuk Tombol Salin */
+#copy-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5em; /* Ukuran ikon emoji */
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+#copy-btn:hover {
+    opacity: 1;
+}
+
+#quote-text { font-size: 1.75em; font-style: italic; line-height: 1.5; margin-bottom: 20px; }
+#quote-author { font-size: 1.1em; font-weight: bold; text-align: right; color: #555; min-height: 1.2em; }
+
+.generator-buttons, .personal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.back-button {
+    background-color: transparent;
+    color: #aaa;
+    border: 1px solid #aaa;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 30px;
+}
+
+.back-button:hover {
+    background-color: #aaa;
+    color: #333;
+}
+
+/* Style untuk Layar Pribadi */
+#personal-quote-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+#personal-quote-form textarea, #personal-quote-form input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #777;
+    background-color: #444;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+#personal-quote-list-container {
+    text-align: left;
+}
+
+#personal-quote-list {
+    list-style: none;
+    padding: 0;
+}
+
+#empty-state-message {
+    background-color: #444;
+    padding: 30px;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: 2px dashed #666;
+}
+
+#empty-state-message p {
+    margin: 5px 0;
+    font-size: 1.1em;
+    color: #aaa;
+}
+
+#personal-quote-list li {
+    background-color: #444;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#personal-quote-list li .delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
